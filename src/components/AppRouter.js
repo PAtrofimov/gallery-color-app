@@ -6,7 +6,7 @@ const AppRouter = () => {
   return (
     <Switch>
       {publicRoutes.map((route) => (
-        <Route {...route} key={route.path} />
+        <Route {...route} key={route.id} />
       ))}
       <Redirect to={RouteNames.COLORS} />
     </Switch>

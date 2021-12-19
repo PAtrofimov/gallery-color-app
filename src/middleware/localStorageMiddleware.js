@@ -1,10 +1,12 @@
 import StorageService from "../api/StorageService";
+import { SET_COLORS, SET_ERROR, SET_ISLOADING } from "../store/reducers/color/action-types";
 
 const localStorageMiddleware = ({ getState }) => {
   return (next) => (action) => {
     const result = next(action);
-    StorageService.set(getState());
-    console.log({state: getState()});
+    if (![SET_COLORS, SET_ERROR, SET_ISLOADING].includes(action.type)) {
+      StorageService.set(getState());
+    }
     return result;
   };
 };

@@ -64,7 +64,7 @@ const AddColor = () => {
 
       <div className="items__actions">
         <button type="submit">Add</button>
-        <button onClick={handleClose}>Close</button>
+        <button type="button" onClick={handleClose}>Close</button>
       </div>
     </form>
   );

@@ -1,7 +1,7 @@
-import axios from "axios";
+import { colors } from "../data/colors";
 
 export default class ColorService {
    static async get() {
-      return await axios.get('./colors.json');
+      return await new Promise(resolve => setTimeout(() => resolve(colors), 200));
    }
 }

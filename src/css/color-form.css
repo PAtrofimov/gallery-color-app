@@ -1,0 +1,43 @@
+.gallery-create__container {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 20px;
+  border: 1px solid;
+}
+
+.form-line {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.form-line > span {
+  flex: 1;
+}
+
+.form-line > input[type="text"],
+.form-line > textarea {
+  padding: 5px;
+  line-height: 1.2;
+}
+
+.form-line > input[type="color"] {
+}
+
+.form-line > .form-input {
+  flex: 2;
+}
+
+.items__actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+
+.items__actions > button {
+  padding: 10px;
+}
+
+.items__actions > button:not(:last-child) {
+  padding: 10px;
+  margin-right: 10px;
+}

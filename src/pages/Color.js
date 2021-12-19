@@ -1,10 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Rating from "../components/Rating";
 import Star from "../components/Star";
 import Stars from "../components/Stars";
-import { RouteNames } from "../routes";
 import { selectColorWithAverageRatingById } from "../selectors";
 import { generateArrayAndReverse } from "../utils";
 
@@ -15,34 +13,38 @@ const Color = ({ id }) => {
   );
   const router = useHistory();
   const onClick = (e) => {
-    //e.stopPropagation();
-    console.log("click");
+    e.stopPropagation();
     if (isAdmin) {
-      router.push(RouteNames.COLORADMIN);
+      router.push(`/color/${id}?role=admin`);
     } else {
-      router.push(RouteNames.COLOR);
+      router.push(`/color/${id}`);
     }
   };
 
   return (
     <div className="gallery__item item" onClick={onClick}>
-      <div className="item__name" style={{ color }}>
+      <div className="item__name" data-name={name} style={{ color }}>
         {name}
       </div>
       <div className="item__color-block" style={{ background: color }}></div>
 
-      <Rating
+      <Stars
+        className="item__stars"
         averageRating={averageRating}
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <Stars className="item__stars">
-          {generateArrayAndReverse(5).map((value) => (
-            <Star key={value} value={value} disabled />
-          ))}
-        </Stars>
-      </Rating>
+        {generateArrayAndReverse(5).map((value) => (
+          <Star
+          key={value}
+          value={value}
+          disabled
+          averageRating={averageRating}
+          id = {id}
+          />
+        ))}
+      </Stars>
     </div>
   );
 };

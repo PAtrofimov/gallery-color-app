@@ -1,7 +1,9 @@
 import React from "react";
 
-const Star = ({ value, disabled, onChange: onChangeParent }) => {
-  const id = `star-${value}`;
+const Star = ({ id: sid, value, disabled, averageRating, onChange: onChangeParent }) => {
+
+  const id = `star-${sid}-${value}`;
+  const name = `rating${sid}`;
   const title = `Rating «${value}»`;
   const onChange = () => {
    onChangeParent(value);
@@ -11,10 +13,11 @@ const Star = ({ value, disabled, onChange: onChangeParent }) => {
       <input
         type="radio"
         id={id}
-        name="rating"
+        name={name}
         value={value}
         onChange={onChange}
         disabled={disabled}
+        checked={averageRating === value}
       />
       <label htmlFor={id} title={title}></label>
     </>

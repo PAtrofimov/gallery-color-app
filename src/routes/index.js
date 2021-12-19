@@ -13,32 +13,60 @@ export const RouteNames = {
 
 const ColorsWithMain = () => (
   <Main>
-    <Colors />
+    <div className="content">
+      <Colors />
+    </div>
   </Main>
 );
 const UpdateColorWithMain = () => (
   <Main>
-    <UpdateColor />
+    <div className="content">
+      <UpdateColor />
+    </div>
   </Main>
 );
 const ErrorWithMain = () => (
   <Main>
-    <Error />
+    <div className="content">
+      <Error />
+    </div>
   </Main>
 );
 
 const AddColorWithMain = () => (
-   <Main>
-     <AddColor />
-   </Main>
- );
+  <Main>
+    <div className="content">
+      <AddColor />
+    </div>
+  </Main>
+);
 
 export const publicRoutes = [
-  { path: RouteNames.COLORS, render: ColorsWithMain, exact: true },
-  { path: RouteNames.COLOR, render: UpdateColorWithMain, exact: true },
-  { path: RouteNames.COLORADMIN, render: UpdateColorWithMain, exact: true },
-  { path: RouteNames.ADDCOLOR, render: AddColorWithMain, exact: true },
-//   { render: ErrorWithMain, exact: true },
+  {
+    id: RouteNames.COLORS,
+    path: RouteNames.COLORS,
+    render: ColorsWithMain,
+    exact: true,
+  },
+  {
+    id: RouteNames.COLOR,
+    path: RouteNames.COLOR,
+    render: UpdateColorWithMain,
+    exact: true,
+  },
+  {
+    id: RouteNames.COLORADMIN,
+    path: RouteNames.COLORADMIN,
+    render: UpdateColorWithMain,
+    exact: true,
+  },
+  {
+    id: RouteNames.ADDCOLOR,
+    path: RouteNames.ADDCOLOR,
+    render: AddColorWithMain,
+    exact: true,
+  },
+  { id: "/error", render: ErrorWithMain, exact: true },
 ];
 
 export const privateRoutes = [];

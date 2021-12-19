@@ -2,14 +2,20 @@ import { createSelector } from "reselect";
 import { averageFromArray } from "../utils";
 
 const selectColors = (state) => {
-  console.log({ state2: state });
   return state.color.colors;
 };
 const selectColorId = (state, colorId) => colorId;
 
+const selectColorsWithId = createSelector(
+  [selectColors],
+  (colors) => colors.reduce((acc, color) => ({...acc, [color.id]: color}), {})
+);
+
 const selectColorById = createSelector(
-  [selectColors, selectColorId],
-  (colors, colorId) => colors.find((color) => color.id === colorId)
+  [selectColorsWithId, selectColorId],
+  (colors, colorId) => {
+     return colors[colorId]
+  }
 );
 
 const selectColorsWithAverageRating = createSelector(selectColors, (colors) => {
@@ -20,14 +26,13 @@ const selectColorsWithAverageRating = createSelector(selectColors, (colors) => {
 });
 
 const selectIdColors = createSelector(selectColors, (colors) => {
-  console.log({ colors });
   return colors.map((color) => color.id);
 });
 
 const selectColorWithAverageRatingById = createSelector(
   selectColorById,
   (color) => {
-     console.log({color});
+     console.log("selectColorWithAverageRatingById", {color});
     const averageRating = averageFromArray(color?.rating);
     return { ...color, averageRating };
   }

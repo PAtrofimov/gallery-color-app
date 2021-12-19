@@ -5,12 +5,10 @@ import { selectIdColors } from "../selectors";
 import Color from "./Color";
 
 const Colors = () => {
-  const { fetchColors, setIsAdmin } = useActions();
+  const { setIsAdmin } = useActions();
 
   const isAdmin = useSelector((state) => state.user.isAdmin);
-  useEffect(() => {
-    fetchColors();
-  }, []);
+
   const handleClick = () => {
     setIsAdmin(!isAdmin);
   };
@@ -22,16 +20,17 @@ const Colors = () => {
         <header className="gallery__header">
           <h2>Colors list</h2>
         </header>
+        <button onClick={handleClick} style={{marginRight: 'auto', marginBottom: '20px'}}>
+          {isAdmin ? "Try User" : "Try Admin"}
+        </button>
         <div className="gallery__row">
           {colors.map((id) => (
             <Color key={id} id={id} />
           ))}
         </div>
-        <button onClick={handleClick}>
-          {isAdmin ? "Try User" : "Try Admin"}
-        </button>
+
       </section>
-      |
+      
     </main>
   );
 };

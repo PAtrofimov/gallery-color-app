@@ -22,14 +22,11 @@ export const ColorActionCreators = {
     try {
       dispatch(ColorActionCreators.setIsLoading(true));
       let state = StorageService.get();
-      let colors;
-      // if (state) {
-      //   colors = state?.color?.colors;
-      // } else {
-      const response = await ColorService.get();
-      colors = response.data;
-      console.log("color", { colors });
-      // }
+      let colors = state?.color?.colors;
+      if (!colors || colors.length === 0) {
+        colors = await ColorService.get();
+        console.log("colors not from kash", { colors });
+      }
 
       dispatch(ColorActionCreators.setColors(colors));
     } catch (error) {

@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Rating from "../components/Rating";
+import { useParams } from "react-router-dom";
 import Star from "../components/Star";
 import Stars from "../components/Stars";
 import { useActions, useQuery } from "../hooks";
@@ -12,9 +12,10 @@ import { generateArrayAndReverse } from "../utils";
 
 const initialState = { name: "", description: "", color: "", rate: "" };
 
-const UpdateColor = ({ id }) => {
+const UpdateColor = () => {
   const query = useQuery();
   const isAdmin = query.get("role") === "admin";
+  const { id } = useParams();
 
   const savedState = useSelector((state) =>
     selectColorWithAverageRatingById(state, id)
@@ -22,15 +23,14 @@ const UpdateColor = ({ id }) => {
 
   const [state, setState] = useState({ ...initialState, ...savedState });
   const router = useHistory();
-  const { editColor, removeColor } = useActions();
+  const { editColor, removeColor, setRating } = useActions();
 
   const onChangeState = ({ target: { name, value } }) => {
     setState((prev) => ({ ...prev, [name]: value }));
   };
 
   const onChangeRating = (value) => {
-    console.log(value);
-    setState((prev) => ({ ...prev, rate: [value] }));
+    setState((prev) => ({ ...prev, rate: value }));
   };
 
   const handleSubmit = (e) => {
@@ -43,6 +43,7 @@ const UpdateColor = ({ id }) => {
   };
 
   const handleDelete = (e) => {
+    e.preventDefault();
     const replyYes = window.confirm("The color will be removed. Continue ?");
     if (replyYes) {
       removeColor(id);
@@ -87,28 +88,35 @@ const UpdateColor = ({ id }) => {
           onChange={onChangeState}
         />
       </label>
-      <Rating
+
+      <Stars
+        className="item__stars"
         averageRating={state.averageRating}
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <Stars className="item__stars">
-          {generateArrayAndReverse(5).map((value) => (
-            <Star key = {value} value={value} onChange={onChangeRating} disabled={isAdmin} />
-          ))}
-        </Stars>
-      </Rating>
+        {generateArrayAndReverse(5).map((value) => (
+          <Star
+            key={value}
+            value={value}
+            averageRating={!isAdmin ? state.rate : state.averageRating}
+            onChange={onChangeRating}
+            disabled={isAdmin}
+            id={id}
+          />
+        ))}
+      </Stars>
 
       <div className="items__actions">
         <button type="submit">Save</button>
-        <button
+        <button type="button"
           onClick={handleDelete}
           className={classNames({ hide: !isAdmin })}
         >
           Delete
         </button>
-        <button onClick={handleClose}>Close</button>
+        <button type="button" onClick={handleClose}>Close</button>
       </div>
     </form>
   );

@@ -28,34 +28,34 @@ export default function colorReducer(state = initialState, action) {
         colors: [...state.colors, { ...action.payload, id: Date.now() }],
       };
     case EDIT_COLOR: {
-      const { id, text, description, rate } = action.payload;
-      const rating = rate ? [...state.colors.rating, rate] :state.colors.rating;
-      
-      const newColors = state.colors.filter((color) => {
-        if (color.id === id) {
-          return { ...color, text, description, rating};
+      const { id, name, description, color, rate } = action.payload;
+
+      const newColors = state.colors.map((col) => {
+        if (col.id === id) {
+          let rating = col.rating || [];
+          rating = rate ? [...rating, rate] : rating;
+          return { ...col, name, description, color, rating };
         }
 
-        return color;
+        return col;
       });
 
       return { ...state, colors: newColors };
     }
     case REMOVE_COLOR: {
-      const { id } = action.payload;
       return {
         ...state,
-        colors: state.colors.filter((color) => color.id !== id),
+        colors: state.colors.filter((color) => color.id !== action.payload),
       };
     }
     case SET_RATING: {
       const { id, rate } = action.payload;
-      const newColors = state.colors.filter((color) => {
-        if (color.id === id) {
-          return { ...color, rating: [...this.state.ratings, rate] };
+      const newColors = state.colors.map((col) => {
+        if (col.id === id) {
+          return { ...col, rating: [...state.colors.rating, rate] };
         }
 
-        return color;
+        return col;
       });
 
       return { ...state, colors: newColors };

@@ -1,0 +1,57 @@
+.stars:not(:checked) > input {
+   display: none;
+ }
+ .stars:not(:checked) > label {
+   width: 42px;
+   padding: 0;
+   cursor: pointer;
+   font-size: 32px;
+   line-height: 32px;
+   color: lightgrey;
+   text-shadow: 1px 1px #bbb;
+ }
+ .stars:not(:checked) > label:before {
+   content: "★";
+ }
+ .stars > input:checked ~ label {
+   color: gold;
+   text-shadow: 1px 1px #c60;
+ }
+ .stars:not(:checked) > label:hover,
+ .stars:not(:checked) > label:hover ~ label {
+   color: gold;
+ }
+ .stars > input:checked + label:hover,
+ .stars > input:checked + label:hover ~ label,
+ .stars > input:checked ~ label:hover,
+ .stars > input:checked ~ label:hover ~ label,
+ .stars > label:hover ~ input:checked ~ label {
+   color: gold;
+   text-shadow: 1px 1px goldenrod;
+ }
+ .stars > label:active {
+   position: relative;
+ }
+
+ .item__rating {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 10px;
+ }
+
+ .gallery-create__stars {
+   overflow: hidden;
+   min-width: 265px;
+   margin: 0 auto;
+   display: flex;
+   justify-content: flex-end;
+   margin-bottom: 10px;
+ }
+
+ .item__stars {
+   /* overflow: hidden; */
+   margin-bottom: 10px;
+   /* width: 265px;
+    margin: 0 auto; */
+ }

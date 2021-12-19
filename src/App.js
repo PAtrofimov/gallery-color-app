@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import 'normalize.css';
+import './style.css';
 import AppRouter from './components/AppRouter';
 
 function App() {
