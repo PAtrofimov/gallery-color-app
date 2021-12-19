@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/gallery-color-app/static/css/main.4cb1596d.chunk.css",
+    "main.js": "/gallery-color-app/static/js/main.5539dfb8.chunk.js",
+    "main.js.map": "/gallery-color-app/static/js/main.5539dfb8.chunk.js.map",
+    "runtime-main.js": "/gallery-color-app/static/js/runtime-main.f61dab5d.js",
+    "runtime-main.js.map": "/gallery-color-app/static/js/runtime-main.f61dab5d.js.map",
+    "static/js/2.d02236be.chunk.js": "/gallery-color-app/static/js/2.d02236be.chunk.js",
+    "static/js/2.d02236be.chunk.js.map": "/gallery-color-app/static/js/2.d02236be.chunk.js.map",
+    "index.html": "/gallery-color-app/index.html",
+    "static/css/main.4cb1596d.chunk.css.map": "/gallery-color-app/static/css/main.4cb1596d.chunk.css.map",
+    "static/js/2.d02236be.chunk.js.LICENSE.txt": "/gallery-color-app/static/js/2.d02236be.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f61dab5d.js",
+    "static/js/2.d02236be.chunk.js",
+    "static/css/main.4cb1596d.chunk.css",
+    "static/js/main.5539dfb8.chunk.js"
+  ]
+}
