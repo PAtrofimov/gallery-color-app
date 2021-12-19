@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/gallery-color-app/static/css/main.9b0f73e8.chunk.css",
-    "main.js": "/gallery-color-app/static/js/main.2409e803.chunk.js",
-    "main.js.map": "/gallery-color-app/static/js/main.2409e803.chunk.js.map",
+    "main.css": "/gallery-color-app/static/css/main.5d346d57.chunk.css",
+    "main.js": "/gallery-color-app/static/js/main.c85a5b91.chunk.js",
+    "main.js.map": "/gallery-color-app/static/js/main.c85a5b91.chunk.js.map",
     "runtime-main.js": "/gallery-color-app/static/js/runtime-main.fe95e8cf.js",
     "runtime-main.js.map": "/gallery-color-app/static/js/runtime-main.fe95e8cf.js.map",
     "static/css/2.679831fc.chunk.css": "/gallery-color-app/static/css/2.679831fc.chunk.css",
-    "static/js/2.4b591d70.chunk.js": "/gallery-color-app/static/js/2.4b591d70.chunk.js",
-    "static/js/2.4b591d70.chunk.js.map": "/gallery-color-app/static/js/2.4b591d70.chunk.js.map",
+    "static/js/2.58529369.chunk.js": "/gallery-color-app/static/js/2.58529369.chunk.js",
+    "static/js/2.58529369.chunk.js.map": "/gallery-color-app/static/js/2.58529369.chunk.js.map",
     "index.html": "/gallery-color-app/index.html",
     "static/css/2.679831fc.chunk.css.map": "/gallery-color-app/static/css/2.679831fc.chunk.css.map",
-    "static/css/main.9b0f73e8.chunk.css.map": "/gallery-color-app/static/css/main.9b0f73e8.chunk.css.map",
-    "static/js/2.4b591d70.chunk.js.LICENSE.txt": "/gallery-color-app/static/js/2.4b591d70.chunk.js.LICENSE.txt"
+    "static/css/main.5d346d57.chunk.css.map": "/gallery-color-app/static/css/main.5d346d57.chunk.css.map",
+    "static/js/2.58529369.chunk.js.LICENSE.txt": "/gallery-color-app/static/js/2.58529369.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fe95e8cf.js",
     "static/css/2.679831fc.chunk.css",
-    "static/js/2.4b591d70.chunk.js",
-    "static/css/main.9b0f73e8.chunk.css",
-    "static/js/main.2409e803.chunk.js"
+    "static/js/2.58529369.chunk.js",
+    "static/css/main.5d346d57.chunk.css",
+    "static/js/main.c85a5b91.chunk.js"
   ]
 }
