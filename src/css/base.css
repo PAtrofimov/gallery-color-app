@@ -73,10 +73,17 @@ html {
    margin-top: 100px;
  }
 
- .hide {
+ .hidden {
    display: none;
  }
 
  .active {
    color: lightgreen;
  }
+
+ .error {
+  text-align: center;
+  padding-bottom: 10px;
+  color: red;
+}
+

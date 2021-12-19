@@ -2,23 +2,38 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useActions } from "../hooks";
 import { RouteNames } from "../routes";
+import { Formik, Form, Field, useFormik } from 'formik';
+import * as Yup from 'yup';
 
-const initialState = { name: "", description: "", color: "" };
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(5, 'Too Short!')
+    .required('Required'),
+  description: Yup.string()
+    .min(10, 'Too Short!')
+    .max(300, 'Too Long!'),
+  color: Yup.string().required('Required'),
+});
 
 const AddColor = () => {
-  const [state, setState] = useState(initialState);
+
   const router = useHistory();
   const { addColor } = useActions();
 
-  const onChangeState = ({ target: { name, value } }) => {
-    setState((prev) => ({ ...prev, [name]: value }));
-  };
+const formik = useFormik({
+  initialValues: {
+    name: "",
+    description: "",
+    color: "",
+  },
+  validationSchema,
+  onSubmit: (values, actions) => {
+    addColor(values);
+    actions.resetForm();
+  }
+});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addColor(state);
-    setState(initialState);
-  };
 
   const handleClose = (e) => {
     router.push(RouteNames.COLORS);
@@ -27,7 +42,7 @@ const AddColor = () => {
   return (
     <form
       className="gallery-create gallery-create__container"
-      onSubmit={handleSubmit}
+      onSubmit={formik.handleSubmit}
     >
       <label className="form-line">
         <span>Name:</span>
@@ -36,10 +51,15 @@ const AddColor = () => {
           name="name"
           className="form-input"
           placeholder="Name"
-          value={state.name}
-          onChange={onChangeState}
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+
       </label>
+      {formik.touched.name && formik.errors.name ? (
+          <div className="error">{formik.errors.name}</div>
+        ) : null}
       <div className="form-line">
         <span>Description:</span>
         <textarea
@@ -47,21 +67,30 @@ const AddColor = () => {
           className="form-input"
           rows="10"
           placeholder="Description"
-          value={state.description}
-          onChange={onChangeState}
+          value={formik.values.description}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         ></textarea>
+
       </div>
+      {formik.touched.description && formik.errors.description ? (
+          <div className="error">{formik.errors.description}</div>
+        ) : null}
       <label className="form-line">
         <span>Choose color:</span>
         <input
           type="color"
           name="color"
           className="form-input"
-          value={state.color}
-          onChange={onChangeState}
+          value={formik.values.color}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
-      </label>
 
+      </label>
+      {formik.touched.color && formik.errors.color ? (
+          <div className="error">{formik.errors.color}</div>
+        ) : null}
       <div className="items__actions">
         <button type="submit">Add</button>
         <button type="button" onClick={handleClose}>Close</button>

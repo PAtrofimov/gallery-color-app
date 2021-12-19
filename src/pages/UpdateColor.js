@@ -112,7 +112,7 @@ const UpdateColor = () => {
         <button type="submit">Save</button>
         <button type="button"
           onClick={handleDelete}
-          className={classNames({ hide: !isAdmin })}
+          className={classNames({ hidden: !isAdmin })}
         >
           Delete
         </button>
