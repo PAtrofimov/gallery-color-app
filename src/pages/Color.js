@@ -10,7 +10,7 @@ const Color = ({ id }) => {
   const isAdmin = useSelector(selectIsAdmin);
   const selectColorWithAverageRatingById = useMemo(makeSelectColorWithAverageRatingById, []);
   const { color, name, averageRating } = useSelector((state) =>
-    selectColorWithAverageRatingById(state, id), shallowEqual
+    selectColorWithAverageRatingById(state, id)
   );
   const router = useHistory();
   const onClick = (e) => {
@@ -23,7 +23,7 @@ const Color = ({ id }) => {
   };
 
   return (
-    <article className="gallery__col">
+    <section className="gallery__col">
       <div className="gallery__item item" onClick={onClick}>
         <div className="item__name" data-name={name} style={{ color }}>
           {name}
@@ -48,7 +48,7 @@ const Color = ({ id }) => {
           ))}
         </Stars>
       </div>
-    </article>
+    </section>
   );
 };
 
