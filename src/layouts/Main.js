@@ -6,10 +6,8 @@ const Main = ({ children }) => {
   return (
     <>
       <Header />
-      <div>
-        <LeftMenu />
-        {children}
-      </div>
+      <LeftMenu />
+      <main role="main">{children}</main>
     </>
   );
 };

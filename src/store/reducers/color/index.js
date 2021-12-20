@@ -25,7 +25,7 @@ export default function colorReducer(state = initialState, action) {
     case ADD_COLOR:
       return {
         ...state,
-        colors: [...state.colors, { ...action.payload, id: Date.now() }],
+        colors: [...state.colors, { ...action.payload, id: String(Date.now()) }],
       };
     case EDIT_COLOR: {
       const { id, name, description, color, rate } = action.payload;

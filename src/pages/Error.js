@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 const Error = () => {
   return (
     <section className="error-page">
+      <header className="gallery-create__header">
+        <h2>Unknown page</h2>
+      </header>
       <h2>Unknown page</h2>
       <Link to="/">Go to the main page</Link>
     </section>

@@ -19,20 +19,24 @@ export const ColorActionCreators = {
   removeColor: (id) => ({ type: REMOVE_COLOR, payload: id }),
   setRating: (color) => ({ type: SET_RATING, payload: color }),
   fetchColors: () => async (dispatch) => {
-    try {
-      dispatch(ColorActionCreators.setIsLoading(true));
-      let state = StorageService.get();
-      let colors = state?.color?.colors;
-      if (!colors || colors.length === 0) {
-        colors = await ColorService.get();
-        console.log("colors not from kash", { colors });
-      }
+    dispatch(ColorActionCreators.setIsLoading(true));
+    setTimeout(async () => {
+      try {
+        let state = StorageService.get();
+        let colors = state?.color?.colors;
+        if (!colors || colors.length === 0) {
+          colors = await ColorService.get();
+          console.log("colors not from cash", { colors });
+        } else {
+          console.log("colors from cash", { colors });
+        }
 
-      dispatch(ColorActionCreators.setColors(colors));
-    } catch (error) {
-      dispatch(ColorActionCreators.setError(error.message));
-    } finally {
-      dispatch(ColorActionCreators.setIsLoading(false));
-    }
+        dispatch(ColorActionCreators.setColors(colors));
+      } catch (error) {
+        dispatch(ColorActionCreators.setError("Error occurs when loading"));
+      } finally {
+        dispatch(ColorActionCreators.setIsLoading(false));
+      }
+    }, 3000);
   },
 };

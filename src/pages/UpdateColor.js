@@ -52,6 +52,10 @@ const UpdateColor = () => {
   };
 
   return (
+    <section className="gallery-update gallery-update__container">
+    <header className="gallery-update__header">
+      <h2>Update color</h2>
+    </header>
     <form
       className="gallery-create gallery-create__container"
       onSubmit={handleSubmit}
@@ -119,6 +123,7 @@ const UpdateColor = () => {
         <button type="button" onClick={handleClose}>Close</button>
       </div>
     </form>
+    </section>
   );
 };
 

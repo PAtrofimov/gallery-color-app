@@ -6,6 +6,7 @@ const localStorageMiddleware = ({ getState }) => {
     const result = next(action);
     if (![SET_COLORS, SET_ERROR, SET_ISLOADING].includes(action.type)) {
       StorageService.set(getState());
+      console.log("store ", {store: getState(), action});
     }
     return result;
   };

@@ -66,7 +66,7 @@ export const publicRoutes = [
     render: AddColorWithMain,
     exact: true,
   },
-  { id: "/error", render: ErrorWithMain, exact: true },
+   { id: "/error", render: ErrorWithMain, exact: true },
 ];
 
 export const privateRoutes = [];

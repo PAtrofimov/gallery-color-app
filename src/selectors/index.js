@@ -32,7 +32,6 @@ const selectIdColors = createSelector(selectColors, (colors) => {
 const selectColorWithAverageRatingById = createSelector(
   selectColorById,
   (color) => {
-     console.log("selectColorWithAverageRatingById", {color});
     const averageRating = averageFromArray(color?.rating);
     return { ...color, averageRating };
   }

@@ -22,30 +22,32 @@ const Color = ({ id }) => {
   };
 
   return (
-    <div className="gallery__item item" onClick={onClick}>
-      <div className="item__name" data-name={name} style={{ color }}>
-        {name}
-      </div>
-      <div className="item__color-block" style={{ background: color }}></div>
+    <article className="gallery__col">
+      <div className="gallery__item item" onClick={onClick}>
+        <div className="item__name" data-name={name} style={{ color }}>
+          {name}
+        </div>
+        <div className="item__color-block" style={{ background: color }}></div>
 
-      <Stars
-        className="item__stars"
-        averageRating={averageRating}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        {generateArrayAndReverse(5).map((value) => (
-          <Star
-          key={value}
-          value={value}
-          disabled
+        <Stars
+          className="item__stars"
           averageRating={averageRating}
-          id = {id}
-          />
-        ))}
-      </Stars>
-    </div>
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          {generateArrayAndReverse(5).map((value) => (
+            <Star
+              key={value}
+              value={value}
+              disabled
+              averageRating={averageRating}
+              id={id}
+            />
+          ))}
+        </Stars>
+      </div>
+    </article>
   );
 };
 
