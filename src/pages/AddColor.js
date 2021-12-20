@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { useActions } from "../hooks";
 import { RouteNames } from "../routes";
-import { Formik, Form, Field, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().min(5, "Name is too short (>5)!").required("Required"),
+  name: Yup.string().min(5, "Name is too short (>5)!").required("Name is required"),
   description: Yup.string().min(10, "Description is too short (>10)!").max(300, "Description is too long(<300)!"),
   color: Yup.string().required("Color is required"),
 });
@@ -19,7 +19,7 @@ const AddColor = () => {
     initialValues: {
       name: "",
       description: "",
-      color: "",
+      color: undefined,
     },
     validationSchema,
     onSubmit: (values, actions) => {

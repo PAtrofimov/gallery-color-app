@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import { shallowEqual, useSelector } from "react-redux";
 import { useActions } from "../hooks";
-import { selectIdColors } from "../selectors";
+import { selectIdColors, selectIsAdmin } from "../selectors";
 import Color from "./Color";
 
 const Colors = () => {
   const { setIsAdmin } = useActions();
 
-  const isAdmin = useSelector((state) => state.user.isAdmin);
-  const { isLoading, error } = useSelector((state) => state.color);
+  const isAdmin = useSelector(selectIsAdmin);
+  const { isLoading, error } = useSelector((state) => state.color, shallowEqual);
 
   const handleClick = () => {
     setIsAdmin(!isAdmin);

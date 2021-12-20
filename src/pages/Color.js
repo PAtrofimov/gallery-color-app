@@ -1,15 +1,16 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useMemo } from "react";
+import { shallowEqual, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Star from "../components/Star";
 import Stars from "../components/Stars";
-import { selectColorWithAverageRatingById } from "../selectors";
+import { makeSelectColorWithAverageRatingById, selectIsAdmin } from "../selectors";
 import { generateArrayAndReverse } from "../utils";
 
 const Color = ({ id }) => {
-  const isAdmin = useSelector((state) => state.user.isAdmin);
+  const isAdmin = useSelector(selectIsAdmin);
+  const selectColorWithAverageRatingById = useMemo(makeSelectColorWithAverageRatingById, []);
   const { color, name, averageRating } = useSelector((state) =>
-    selectColorWithAverageRatingById(state, id)
+    selectColorWithAverageRatingById(state, id), shallowEqual
   );
   const router = useHistory();
   const onClick = (e) => {
