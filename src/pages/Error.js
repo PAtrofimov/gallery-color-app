@@ -7,7 +7,6 @@ const Error = () => {
       <header className="gallery-create__header">
         <h2>Unknown page</h2>
       </header>
-      <h2>Unknown page</h2>
       <Link to="/">Go to the main page</Link>
     </section>
   );
